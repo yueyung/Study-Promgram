@@ -1,20 +1,18 @@
-def palindrome(string):
-    length = len(string)
-    last = length-1
-    length //= 2
-    flag = 1
-    for each in range(length):
-        if string[each] != string[last]:
-            flag = 0
-        last -= 1
-
-    if flag == 1:
-        return 1
+def palindrome(s: str)-> bool:
+    l = len(s) // 2
+    m = len(s) - 1
+    f = 0
+    for i in range(l):
+        if s[i] != s[m - i]:
+            break
     else:
-        return 0
+        f = 1
 
-string = input('请输入一句话：')
-if palindrome(string) == 1:
-    print('是回文联!')
-else:
-    print('不是回文联！')
+    return True if f else False
+
+if __name__ == '__main__':
+    inputs = input()
+    while inputs.isspace() or len(inputs) == 0:
+        inputs = input()
+
+    print('input str', inputs, 'is palindrome?', palindrome(inputs))
